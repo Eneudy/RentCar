@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
+using RentCar.Clases;
 
 namespace RentCar
 {
@@ -16,7 +17,7 @@ namespace RentCar
     {
         SqlConnection con = null;
         // Connection string var from app.config file
-        static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
+        //static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
 
         public ListaClientes()
         {
@@ -25,7 +26,6 @@ namespace RentCar
 
         private void ListaClientes_Load(object sender, EventArgs e)
         {
- 
             cargarTabla();
         }
 
@@ -33,7 +33,8 @@ namespace RentCar
         {
             try
             {
-                con = new SqlConnection(connectionStr);
+                //con = new SqlConnection(connectionStr);
+                con = Conexion.getSqlConexion();
                 con.Open();
                 string sql = "DELETE FROM Cliente WHERE IdCliente = " + "'" + TxtId.Text + "'" + "";
                 SqlCommand comando = new SqlCommand(sql, con);
@@ -51,7 +52,8 @@ namespace RentCar
         }
         private void cargarTabla()
         {
-            con = new SqlConnection(connectionStr);
+            //con = new SqlConnection(connectionStr);
+            con = Conexion.getSqlConexion();
             con.Open();
             string sql = "select * from Cliente";
             SqlDataAdapter da = new SqlDataAdapter(sql, con);

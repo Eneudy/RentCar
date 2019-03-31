@@ -10,12 +10,13 @@ namespace RentCar.Clases
 {
      class Conexion
     {
-        static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
+       static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
 
-        private static void SqlConexion()
+       public static SqlConnection getSqlConexion()
         {
-            SqlConnection con;
-            con = new SqlConnection(connectionStr);
+            //SqlConnection con;
+            //con = new SqlConnection(connectionStr);
+            return new SqlConnection(connectionStr);
         }
     }
 }

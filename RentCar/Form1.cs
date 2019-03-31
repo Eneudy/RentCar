@@ -10,14 +10,16 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using RentCar.Clases;
 using System.Configuration;
+using RentCar.Clases;
 
 namespace RentCar
 {
     public partial class Form1 : Form
 
     {
-        static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
-        SqlConnection con = new SqlConnection(connectionStr);
+        //static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
+        //SqlConnection con = new SqlConnection(connectionStr);
+        SqlConnection con = Conexion.getSqlConexion();
     
         public Form1()
         {
@@ -32,7 +34,6 @@ namespace RentCar
 
         private void BtBuscar_Click(object sender, EventArgs e)
         {
-
             ejecutarConsulta();
         }
 

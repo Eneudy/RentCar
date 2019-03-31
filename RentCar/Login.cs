@@ -8,31 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace RentCar
 {
     public partial class Login : Form
     {
+        static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
+
         public Login()
         {
             InitializeComponent();
             TxtCedulaLogin.PasswordChar = '*';
             TxtCedulaLogin.MaxLength = 12;
-            
         }
        
-
         private void BtIngresarLogin_Click(object sender, EventArgs e)
         {
             try
             {
                 string pCedula = TxtCedulaLogin.Text;
-
                 int vnTotal = 0;
                 string vcCedula = pCedula.Replace("-", "");
                 int pLongCed = vcCedula.Trim().Length;
                 int[] digitoMult = new int[11] { 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
-
                 if (pLongCed < 11 || pLongCed > 11)
                     return;
 
@@ -47,14 +46,11 @@ namespace RentCar
 
                 if (vnTotal % 10 == 0)
                 {
-
                     logmain();
-
                 }
 
                 else
                 {
-
                     MessageBox.Show("Cedula incoreccta");
                 }
                 return;
@@ -62,63 +58,39 @@ namespace RentCar
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("ha ocurrido un error al validar la cedula:" + ex.Message);
-
             }
-            
-
-            
-           
 
         }
 
         private void logmain() {
-
             try
             {
-
-                SqlConnection conLogin = new SqlConnection("Data Source=DESKTOP-7UG5AJD\\SQLEXPRESS02;Initial Catalog=RentCar;Integrated Security=True");
+                SqlConnection conLogin = new SqlConnection(connectionStr);
                 conLogin.Open();
                 string sqlLogin = "Select IdEmpleado,CedulaEmpleado from Empleado where IdEmpleado like " + TxtIDLogin.Text + " and CedulaEmpleado like " + TxtCedulaLogin.Text + " ";
                 SqlDataAdapter sda = new SqlDataAdapter(sqlLogin, conLogin);
                 DataTable dta = new DataTable();
                 sda.Fill(dta);
 
-
                 if (dta.Rows.Count == 1)
                 {
                     MessageBox.Show("Login exitoso.");
-
                     logadmin();
-
-
-
-
                 }
                 else
                 {
                     MessageBox.Show("Datos incorrectos.");
                 }
-
-
-
-
-
-
-
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void logadmin() {
-
-            SqlConnection conLogin = new SqlConnection("Data Source=DESKTOP-7UG5AJD\\SQLEXPRESS02;Initial Catalog=RentCar;Integrated Security=True");
+            SqlConnection conLogin = new SqlConnection(connectionStr);
             conLogin.Open();
             string sqlLogin = "Select TipoEmpleado from Empleado where IdEmpleado like " + TxtIDLogin.Text + "and TipoEmpleado = " + "'Administrativo'" + " ";
             SqlDataAdapter sda = new SqlDataAdapter(sqlLogin, conLogin);
@@ -132,20 +104,15 @@ namespace RentCar
                 frmMenu.ShowDialog();
                 this.Close();
             }
-
-
             else 
             {
                 logventa();
             }
-
-
         }
 
         private void logventa()
         {
-
-            SqlConnection conLogin = new SqlConnection("Data Source=DESKTOP-7UG5AJD\\SQLEXPRESS02;Initial Catalog=RentCar;Integrated Security=True");
+            SqlConnection conLogin = new SqlConnection(connectionStr);
             conLogin.Open();
             string sqlLogin = "Select TipoEmpleado from Empleado where IdEmpleado like " + TxtIDLogin.Text + "and TipoEmpleado = " + "'Ventas'" + " ";
             SqlDataAdapter sda = new SqlDataAdapter(sqlLogin, conLogin);
@@ -158,16 +125,10 @@ namespace RentCar
                 UserVentas frmUserventas = new UserVentas();
                 frmUserventas.ShowDialog();
             }
-
-
             else
             {
-
                 MessageBox.Show("Error al vereficar su tipo de usuario.");
-
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -178,9 +139,7 @@ namespace RentCar
 
         private void TxtIDLogin_TextChanged(object sender, EventArgs e)
         {
-           
         }
-        
 
         private void TxtIDLogin_KeyPress(object sender, KeyPressEventArgs e)
         {

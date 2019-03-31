@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace RentCar
 {
     public partial class RegistrarEmpleado : Form
     {
-
         SqlConnection con = null;
+        static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
 
         public RegistrarEmpleado()
         {
@@ -23,7 +24,6 @@ namespace RentCar
 
         private void RegistrarEmpleado_Load(object sender, EventArgs e)
         {
-
         }
 
         private void BtRegistrar_Click(object sender, EventArgs e)
@@ -35,10 +35,7 @@ namespace RentCar
         {
             try
             {
-
-                
-
-                con = new SqlConnection("Data Source=DESKTOP-7UG5AJD\\SQLEXPRESS02;Initial Catalog=RentCar;Integrated Security=True");
+                con = new SqlConnection(connectionStr);
                 con.Open();
                 string sql = "INSERT INTO Empleado (NombreEmpleado,CedulaEmpleado,TandaLabor,PorcientoComision,FechaIngreso,Estado,TipoEmpleado) VALUES (@nombre,@cedula,@TandaLaboral,@PorcientoComision,@FechaIngreso,@Estado,@TipoEmpleado) ";
                 SqlCommand comando = new SqlCommand(sql, con);
@@ -49,32 +46,20 @@ namespace RentCar
                 comando.Parameters.AddWithValue("@FechaIngreso", dateTimePicker1.Value.ToString("yyyy/M/d")); 
                 comando.Parameters.AddWithValue("@Estado", cmbEstado.Text);
                 comando.Parameters.AddWithValue("@TipoEmpleado", CmbTipoEmpleado.Text);
-
                 comando.ExecuteNonQuery();
                 MessageBox.Show("Ha sido registrado");
-
                 this.Close();
-
 
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Ha ocurrido un error al registrar el empleado " + ex.Message);
-
-               
             }
-
-
-
-
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
-       }
+        }
 
         private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -93,9 +78,6 @@ namespace RentCar
 
         private void BtEditar_Click(object sender, EventArgs e)
         {
-
-           
-            
         }
     }
 }

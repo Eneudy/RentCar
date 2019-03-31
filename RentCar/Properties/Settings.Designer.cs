@@ -26,8 +26,8 @@ namespace RentCar.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-7UG5AJD\\SQLEXPRESS02;Initial Catalog=RentCar;Integrated Secur" +
-            "ity=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-0M12RT1\\EQUIPO;Initial Catalog=RentCar;Integrated Security=Tr" +
+            "ue")]
         public string RentCarConnectionString {
             get {
                 return ((string)(this["RentCarConnectionString"]));

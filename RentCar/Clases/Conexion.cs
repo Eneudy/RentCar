@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace RentCar.Clases
 {
      class Conexion
     {
+        static string connectionStr = ConfigurationManager.ConnectionStrings["RentCar.Properties.Settings.RentCarConnectionString"].ConnectionString;
+
         private static void SqlConexion()
         {
             SqlConnection con;
-             con = new SqlConnection("Data Source=DESKTOP-7UG5AJD\\SQLEXPRESS02;Initial Catalog=RentCar;Integrated Security=True");
+            con = new SqlConnection(connectionStr);
         }
-        
-      
-
     }
 }

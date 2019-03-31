@@ -43,8 +43,9 @@
             this.panel3.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(542, 388);
+            this.panel3.Size = new System.Drawing.Size(723, 478);
             this.panel3.TabIndex = 3;
             this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             // 
@@ -54,8 +55,9 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(539, 385);
+            this.panel1.Size = new System.Drawing.Size(719, 474);
             this.panel1.TabIndex = 3;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -65,35 +67,40 @@
             this.panel2.Controls.Add(this.BtRentar);
             this.panel2.Controls.Add(this.btRegistCliente);
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(208, 385);
+            this.panel2.Size = new System.Drawing.Size(277, 474);
             this.panel2.TabIndex = 2;
             // 
             // BtRentar
             // 
-            this.BtRentar.Location = new System.Drawing.Point(33, 65);
+            this.BtRentar.Location = new System.Drawing.Point(44, 80);
+            this.BtRentar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtRentar.Name = "BtRentar";
-            this.BtRentar.Size = new System.Drawing.Size(142, 51);
+            this.BtRentar.Size = new System.Drawing.Size(189, 63);
             this.BtRentar.TabIndex = 0;
             this.BtRentar.Text = "Rentar";
             this.BtRentar.UseVisualStyleBackColor = true;
             // 
             // btRegistCliente
             // 
-            this.btRegistCliente.Location = new System.Drawing.Point(33, 208);
+            this.btRegistCliente.Location = new System.Drawing.Point(44, 256);
+            this.btRegistCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btRegistCliente.Name = "btRegistCliente";
-            this.btRegistCliente.Size = new System.Drawing.Size(142, 51);
+            this.btRegistCliente.Size = new System.Drawing.Size(189, 63);
             this.btRegistCliente.TabIndex = 1;
             this.btRegistCliente.Text = "Registrar Cliente";
             this.btRegistCliente.UseVisualStyleBackColor = true;
+            this.btRegistCliente.Click += new System.EventHandler(this.btRegistCliente_Click_1);
             // 
             // UserVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 384);
+            this.ClientSize = new System.Drawing.Size(717, 473);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserVentas";
             this.Text = "UserVentas";
             this.Load += new System.EventHandler(this.UserVentas_Load);

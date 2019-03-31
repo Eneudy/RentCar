@@ -70,11 +70,6 @@ namespace RentCar
                 v.Handled = true;
                 MessageBox.Show("No puedes introducir numero negativos");
             }
-
-
-
         }
-        
-
     }
-    }
+}
